@@ -1,3 +1,9 @@
 background music:
-https://www.youtube.com/watch?v=9WkBBouqt8g
-seven nation army instrumental
+
+Player dying:
+
+Projectile firing:
+
+Projectile hitting target:
+
+Ball being destroyed:
