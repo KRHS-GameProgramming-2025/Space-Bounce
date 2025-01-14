@@ -1,5 +1,6 @@
 import pygame, sys, math
 from Main import *
+from Ball import *
 
 class PlayerBall(Ball):
      def __init__(self, maxSpeed=4, startPos=[0,0]):
@@ -39,13 +40,16 @@ class PlayerBall(Ball):
                 self.didBounceY = True
                 
             if self.rect.top < 0:
+                print("1")
                 
                 
         if not self.didBounceY:
             if self.rect.right > width:
+                print("1")
                 
                 
             if self.rect.left < 0:
+                print("1")
                 
                 
             
