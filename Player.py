@@ -1,16 +1,15 @@
 import pygame, sys, math
 from Main import *
 
-class PlayerBall(Ball):
-     def __init__(self, maxSpeed=4, startPos=[0,0]):
+class PlayerBall():
+    def __init__(self, maxSpeed=4, startPos=[0,0]):
         Ball.__init__(self, [0,0], startPos)
         self.image = [pygame.image.load("Images/Player/Ship.png")]
         self.rect = self.image.get_rect()
-        
         self.maxSpeed = maxSpeed
         self.kind = "player"
 
-     def goKey(self, direction):
+    def goKey(self, direction):
         if direction == "left":
             self.speedx = -self.maxSpeed
         elif direction == "right":
@@ -30,26 +29,34 @@ class PlayerBall(Ball):
             self.speedy = 0 
             
                
-     def wallCollide(self, size):
+    def wallcollide(self, size):
         width = size[0]
         height = size[1]
-        
         if not self.didBounceY:
-            if self.rect.bottom > height:
+            if self.Rect.bottom > height:
+                self.speedy = -self.speedy
+                self.move()
+                self.speedy = 0
                 self.didBounceY = True
-                
-            if self.rect.top < 0:
-                
-                
-        if not self.didBounceY:
-            if self.rect.right > width:
-                
-                
-            if self.rect.left < 0:
+            if self.Rect.top < 0:
+                self.speedy = -self.speedy
+                self.move()
+                self.speedy = 0
+                self.didBounceY = True
+        if not self.didBounceX:
+            if self.Rect.right > width:
+                self.speedx = -self.speedx
+                self.move()
+                self.speedx = 0
+                self.didBounceX = True
+            if self.Rect.left < 0:
+                self.speedx = -self.speedx
+                self.move()
+                self.speedx = 0
+                self.didBounceX = True
                 
                 
             
-     def ballCollide(self, other):
+    def ballCollide(self, other):
         if self != other:
             print("e")
-           
