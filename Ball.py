@@ -53,6 +53,25 @@ class Ball():
                 self.frame += 1
             self.image = self.images[self.frame]
             
+        
+         
+    def wallCollide(self, size):
+        width = size[0]
+        height = size[1]
+        if not self.didBounceY:
+            if self.rect.bottom > height:
+                self.speedy = -self.speedy
+                self.didBounceY = True
+            if self.rect.top < 0:
+                self.speedy = -self.speedy
+                self.didBounceY = True
+        if not self.didBounceY:
+            if self.rect.right > width:
+                self.speedx = -self.speedx
+                self.didBounceX = True
+            if self.rect.left < 0:
+                self.speedx = -self.speedx
+                self.didBounceX = True
             
     def ballCollide(self, other):
         if self != other:
@@ -76,4 +95,5 @@ class Ball():
         y1 = self.rect.centery
         y2 = other.rect.centery
         return math.sqrt((x2-x1)**2 + (y2-y1)**2)
+
 
