@@ -1,9 +1,9 @@
-background music: SkyFire (Title Screen).ogg
+background music:Space Shooter Music
 
 Player dying:
 
-Projectile firing: space laser.wav
+Projectile firing:Space Laser
 
-Projectile hitting target:
+Projectile hitting target: space shooter sound effects
 
 Ball being destroyed:
