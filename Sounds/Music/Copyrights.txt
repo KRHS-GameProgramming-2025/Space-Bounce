@@ -2,7 +2,7 @@ background music: SkyFire (Title Screen).ogg
 
 Player dying:
 
-Projectile firing:
+Projectile firing: space laser.wav
 
 Projectile hitting target:
 
