@@ -6,4 +6,4 @@ Projectile firing:Space Laser
 
 Projectile hitting target: space shooter sound effects
 
-Ball being destroyed:
+Ball being destroyed: Die for the Empire Sound Effects  explosion
