@@ -6,6 +6,11 @@ from Ball import *
 clock = pygame.time.Clock();
 size = [900, 700]
 screen = pygame.display.set_mode(size)
+background = pygame.image.load("Images/Other/Background.png")
+counter = 0;       
+player = PlayerBall(4, [900/2, 700/2])
+balls = [player]
+
 
 
 while True:
@@ -32,6 +37,33 @@ while True:
                 player.goKey("sdown")   
         
     
-   
+    
+     
+    counter += 1
+    if counter >= 10:
+        counter = 0;
+        balls += [Ball([random.randint(-7,7), random.randint(-7,7)],
+                [random.randint(100, 700), random.randint(100, 500)])
+        ]
+        for ball in balls:
+            if balls[-1].ballCollide(ball):
+                balls.remove(balls[-1])
+                break
+            
+    for ball in balls:
+        print("")
+        
+        
+    for hittingBall in balls:
+        for hitBall in balls:
+            if hittingBall.ballCollide(hitBall):
+                if hittingBall.kind == "player":
+                    balls.remove(hitBall)
+            
+    
+    screen.fill((64, 128, 255))
+    for ball in balls:
+        screen.blit(ball.image, ball.rect)
+    pygame.display.flip()
     clock.tick(100)
     #print(clock.get_fps(), len(balls))
