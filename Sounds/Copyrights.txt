@@ -4,18 +4,18 @@ sound file name: skyfire.mp3
 
 Player dying:   16bit death sound (only sound file there)
 link: https://opengameart.org/content/16bit-death-sound
-sound file name: sfx_-_death_explosion.mp3
+sound file name: player death.mp3
 
 Projectile firing: Space Laser  (only sound file there)
 link: https://opengameart.org/content/space-laser
-sound file name: space laser (2).mp3
+sound file name: laser.mp3
 
 Projectile hitting target: space shooter sound effects     (explosion(2.wav))
 link: https://opengameart.org/content/space-shooter-sound-effects
-sound file name: sounds explosion.mp3
+sound file name: hit target explosion.mp3
 
 Ball being destroyed: Die for the Empire Sound Effects  (explosion audio)
 link: https://opengameart.org/content/die-for-the-empire-sound-effects-lasers-bombs-explosions-bullets
-sound file name: explosion.mp3
+sound file name: ball explosion.mp3
 
 all audio is from open game art
