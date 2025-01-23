@@ -7,7 +7,7 @@ link: https://opengameart.org/content/16bit-death-sound
 Projectile firing: Space Laser  (only sound file there)
 link: https://opengameart.org/content/space-laser
 
-Projectile hitting target: space shooter sound effects     (explosion(1.wav))
+Projectile hitting target: space shooter sound effects     (explosion(2.wav))
 link: https://opengameart.org/content/space-shooter-sound-effects
 
 Ball being destroyed: Die for the Empire Sound Effects  (explosion audio)
