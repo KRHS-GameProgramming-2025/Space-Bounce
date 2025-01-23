@@ -1,6 +1,6 @@
 background music: Space Shooter Music (skyfire audio)
 link: https://opengameart.org/content/space-shooter-music
-sound file name: skyfire(title screen)(1).mp3
+sound file name: skyfire.mp3
 
 Player dying:   16bit death sound (only sound file there)
 link: https://opengameart.org/content/16bit-death-sound

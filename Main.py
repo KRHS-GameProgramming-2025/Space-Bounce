@@ -2,16 +2,21 @@ import pygame, sys, math, random
 from Player import *
 from Ball import *
 
+pygame.mixer.init()
 
 clock = pygame.time.Clock();
+
 size = [900, 700]
 screen = pygame.display.set_mode(size)
 background = pygame.image.load("Images/Other/Background.png")
+
 counter = 0;       
 player = Player(4, [900/2, 700/2])
 balls = [Ball()]
 
 
+pygame.mixer.music.load("Sounds/Music/SkyFire.mp3")
+pygame.mixer.music.play()
 
 while True:
     for event in pygame.event.get():
