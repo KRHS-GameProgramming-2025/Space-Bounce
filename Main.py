@@ -8,8 +8,8 @@ size = [900, 700]
 screen = pygame.display.set_mode(size)
 background = pygame.image.load("Images/Other/Background.png")
 counter = 0;       
-player = PlayerBall(4, [900/2, 700/2])
-balls = [player]
+player = Player(4, [900/2, 700/2])
+balls = [Ball()]
 
 
 
@@ -51,7 +51,7 @@ while True:
                 break
             
     for ball in balls:
-        print("")
+        ball.update(size)
         
         
     for hittingBall in balls:

@@ -1,7 +1,7 @@
 import pygame, sys, math
 
 class Ball():
-    def __init__(self, speed = [0,0], startPos=[0,0]):
+    def __init__(self, speed = [1,1], startPos=[0,0]):
         self.images = [pygame.image.load("Images/Ball/Ball1.png"),
                       pygame.image.load("Images/Ball/Ball2.png"),
                       pygame.image.load("Images/Ball/Ball3.png"),

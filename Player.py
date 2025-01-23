@@ -1,7 +1,7 @@
 import pygame, sys, math
 from Ball import *
 
-class PlayerBall():
+class Player():
     def __init__(self, maxSpeed=4, startPos=[0,0]):
         Ball.__init__(self, [0,0], startPos)
         self.image = [pygame.image.load("Images/Player/Ship.png")]
@@ -30,29 +30,7 @@ class PlayerBall():
             self.speedy = 0
         elif direction == "sdown":
             self.speedy = 0 
-            
-               
-    def wallcollide(self, size):
-        width = size[0]
-        height = size[1]
-        if not self.didBounceY:
-            if self.Rect.bottom > height:
-                self.speedy = -self.speedy
-                self.move()
-                
-            if self.rect.top < 0:
-                print("")
-            
-                
-        if not self.didBounceY:
-            if self.rect.right > width:
-                print("")
-                
-                
-            if self.rect.left < 0:
-                print("")
-                
-                
+                    
             
     def ballCollide(self, other):
         if self != other:
