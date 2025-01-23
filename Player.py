@@ -12,14 +12,13 @@ class Player():
 
     def goKey(self, direction):
         if direction == "left":
-            self.speed = maxSpeed
+            self.speed = self.maxSpeed
         
         elif direction == "right":
-             self.speed = maxSpeed
+             self.speed = self.maxSpeed
             
         elif direction == "up":
             self.speedy = -self.maxSpeed
-            self.images = self.imagesUp
         elif direction == "down":
             self.speedy = self.maxSpeed
         elif direction == "sleft":
