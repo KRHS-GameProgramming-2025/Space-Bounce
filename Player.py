@@ -4,9 +4,11 @@ from Ball import *
 class Player():
     def __init__(self, maxSpeed=4, startPos=[0,0]):
         Ball.__init__(self, [0,0], startPos)
-        self.image = [pygame.image.load("Images/Player/Ship.png")]
-        self.frame = self.image[self.frame]
-        self.rect = self.frame.get_rect()
+        self.images = [pygame.image.load("Images/Player/Ship.png")]
+        self.frame = 0
+        
+        self.image = self.images[self.frame]
+        self.rect = self.image.get_rect()
         self.maxSpeed = maxSpeed
         self.kind = "player"
 
@@ -16,7 +18,6 @@ class Player():
         
         elif direction == "right":
              self.speed = self.maxSpeed
-            
         elif direction == "up":
             self.speedy = -self.maxSpeed
         elif direction == "down":

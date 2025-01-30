@@ -1,6 +1,7 @@
 import pygame, sys, math, random
 from Player import *
 from Ball import *
+from Laser import *
 
 try:
     pygame.mixer.init()
@@ -38,6 +39,8 @@ while True:
                 player.goKey("up")
             elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
                 player.goKey("down")
+            elif event.key == pygame.K_SPACE or event.key == pygame.K_SPACE:
+                player.goKey("space")
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.goKey("sleft")
@@ -47,12 +50,14 @@ while True:
                 player.goKey("sup")
             elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
                 player.goKey("sdown")   
+            elif event.key == pygame.K_SPACE or event.key == pygame.K_SPACE:
+                player.goKey("sspace")   
         
     
     
      
     counter += 1
-    if counter >= 50:
+    if counter >= 100:
         counter = 0;
         balls += [Ball([random.randint(-7,7), random.randint(-7,7)],
                 [random.randint(100, 700), random.randint(100, 500)])
@@ -76,6 +81,8 @@ while True:
     screen.fill((64, 128, 255))
     for ball in balls:
         screen.blit(ball.image, ball.rect)
+    screen.blit(player.image, player.rect)
     pygame.display.flip()
     clock.tick(100)
     #print(clock.get_fps(), len(balls))
+

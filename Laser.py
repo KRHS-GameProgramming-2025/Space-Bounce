@@ -1,16 +1,17 @@
 import pygame, sys, math
 
-class Player():
+class Laser():
     def __init__(self, maxSpeed=4, startPos=[0,0]):
-        Ball.__init__(self, [0,0], startPos)
-        self.image = [pygame.image.load("Images/Player/Laser.png")]
+        Laser.__init__(self, [0,0], startPos)
+        self.image = [pygame.image.load("Images/Other/Laser.png")]
         self.rect = self.image.get_rect()
         self.maxSpeed = maxSpeed
-        self.kind = "player"
+        self.kind = "laser"
 
-def fire
-
+def fire():
+    end
+    
 def ballCollide(self, other):
-        if other = Ball:
+        if other == Ball:
             self.remove
             ball.remove
