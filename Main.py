@@ -2,7 +2,11 @@ import pygame, sys, math, random
 from Player import *
 from Ball import *
 
-pygame.mixer.init()
+try:
+    pygame.mixer.init()
+    sound = True
+except:
+    sound = False
 
 clock = pygame.time.Clock();
 
@@ -15,8 +19,11 @@ player = Player(4, [900/2, 700/2])
 balls = [Ball()]
 
 
-pygame.mixer.music.load("Sounds/Music/SkyFire.mp3")
-pygame.mixer.music.play()
+if sound:
+    pygame.mixer.music.load("Sounds/Music/SkyFire.mp3")
+    pygame.mixer.music.play()
+else:
+    print("No Sound")
 
 while True:
     for event in pygame.event.get():
