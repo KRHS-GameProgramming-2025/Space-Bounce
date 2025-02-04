@@ -8,11 +8,10 @@ class Laser():
         self.maxSpeed = maxSpeed
         self.kind = "laser"
         self.kind = "player"
-    def sound(self):
-        end
 
-def fire():
-    end
+
+
+
     
 def ballCollide(self, other):
         if other == Ball:
