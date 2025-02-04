@@ -27,6 +27,7 @@ class Ball():
         self.animationTimerMax = 120/10
 
 
+        
     
     def update(self, size):
         self.move()
