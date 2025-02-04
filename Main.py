@@ -57,8 +57,7 @@ while True:
     
      
     counter += 1
-    if counter >= 100:
-        counter = 0;
+    if counter >= 100:  
         balls += [Ball([random.randint(-7,7), random.randint(-7,7)],
                 [random.randint(100, 700), random.randint(100, 500)])
         ]
@@ -83,6 +82,11 @@ while True:
         screen.blit(ball.image, ball.rect)
     screen.blit(player.image, player.rect)
     pygame.display.flip()
+    
+    
+    
+    
+    
     clock.tick(100)
     #print(clock.get_fps(), len(balls))
 

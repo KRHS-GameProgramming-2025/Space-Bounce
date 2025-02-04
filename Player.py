@@ -14,14 +14,13 @@ class Player():
 
     def goKey(self, direction):
         if direction == "left":
-            self.speed = self.maxSpeed
-        
-        elif direction == "right":
-             self.speed = self.maxSpeed
-        elif direction == "up":
-            self.speedy = -self.maxSpeed
-        elif direction == "down":
             self.speedy = self.maxSpeed
+        elif direction == "right":
+            self.speedy = self.maxSpeed
+        elif direction == "up":
+            self.speedy = self.maxSpeed
+        elif direction == "down":
+            self.speedy = -self.maxSpeed
         elif direction == "sleft":
             self.speedx = 0
         elif direction == "sright":
@@ -29,7 +28,7 @@ class Player():
         elif direction == "sup":
             self.speedy = 0
         elif direction == "sdown":
-            self.speedy = 0 
+            self.speedy = 0
                     
             
     def ballCollide(self, other):
