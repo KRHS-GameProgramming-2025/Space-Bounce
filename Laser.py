@@ -10,7 +10,6 @@ class Laser():
         self.kind = "laser"
 =======
         self.kind = "player"
-    def sound(self):
 
 def fire
 >>>>>>> origin/master
