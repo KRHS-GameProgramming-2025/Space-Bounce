@@ -27,6 +27,7 @@ class Ball():
         self.animationTimerMax = 120/10
 
     def sound(self):
+        end
         
     
     def update(self, size):
