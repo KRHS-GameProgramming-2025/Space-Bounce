@@ -6,7 +6,15 @@ class Laser():
         self.image = [pygame.image.load("Images/Other/Laser.png")]
         self.rect = self.image.get_rect()
         self.maxSpeed = maxSpeed
+<<<<<<< HEAD
         self.kind = "laser"
+=======
+        self.kind = "player"
+    def sound(self):
+        
+
+def fire
+>>>>>>> origin/master
 
 def fire():
     end
