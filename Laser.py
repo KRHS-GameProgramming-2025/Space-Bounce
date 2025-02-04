@@ -7,6 +7,8 @@ class Player():
         self.rect = self.image.get_rect()
         self.maxSpeed = maxSpeed
         self.kind = "player"
+    def sound(self):
+        
 
 def fire
 
