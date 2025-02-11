@@ -78,14 +78,16 @@ while True:
     
     
     screen.fill((64, 128, 255))
+    screen.blit(background, (0, 0))
     for ball in balls:
         screen.blit(ball.image, ball.rect)
+    
     screen.blit(player.image, player.rect)
     pygame.display.flip()
     
     
     
-    
+    #FFFFFF
     
     clock.tick(100)
     #print(clock.get_fps(), len(balls))
