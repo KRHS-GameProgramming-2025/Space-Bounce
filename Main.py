@@ -22,6 +22,7 @@ balls = [Ball()]
 
 if sound:
     pygame.mixer.music.load("Sounds/Music/SkyFire.mp3")
+    pygame.mixer.music.set_volume(.25)
     pygame.mixer.music.play()
 else:
     print("No Sound")
@@ -39,8 +40,11 @@ while True:
                 player.goKey("up")
             elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
                 player.goKey("down")
-            elif event.key == pygame.K_SPACE or event.key == pygame.K_SPACE:
+            elif event.key == pygame.K_SPACE:
                 player.goKey("space")
+                
+            elif event.key == pygame.K_p:
+                balls[0].die()
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.goKey("sleft")
@@ -50,7 +54,7 @@ while True:
                 player.goKey("sup")
             elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
                 player.goKey("sdown")   
-            elif event.key == pygame.K_SPACE or event.key == pygame.K_SPACE:
+            elif event.key == pygame.K_SPACE:
                 player.goKey("sspace")   
         
     

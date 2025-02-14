@@ -25,7 +25,8 @@ class Ball():
         self.kind = "ball"
         self.animationTimer = 0
         self.animationTimerMax = 120/10
-
+        
+        self.deathSound=pygame.mixer.Sound("Sounds/Other/ball explosion.mp3")
 
         
     
@@ -90,7 +91,10 @@ class Ball():
                                     self.speedy = -self.speedy
                                     self.didBounceY = True
                                 return True
-        return False                   
+        return False       
+        
+    def die(self):
+        self.deathSound.play()
 
     def getDist(self, other):
         x1 = self.rect.centerx
