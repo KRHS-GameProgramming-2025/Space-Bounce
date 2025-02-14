@@ -11,6 +11,9 @@ class Player():
         self.rect = self.image.get_rect()
         self.maxSpeed = maxSpeed
         self.kind = "player"
+        
+        self.fireSound=pygame.mixer.Sound("Sounds/PlayerSounds/laser.mp3")
+        self.dieSound=pygame.mixer.Sound("Sounds/PlayerSounds/player death.mp3")
 
     def goKey(self, direction):
         if direction == "left":
@@ -39,4 +42,10 @@ class Player():
                         if self.rect.top < other.rect.bottom:
                             if self.getDist(other) < self.rad + other.rad:
                                 return True
-        return False      
+        return False  
+        
+    def death(self):
+        self.dieSound.play()
+    
+    def fire(self):
+        self.fireSound.play()
