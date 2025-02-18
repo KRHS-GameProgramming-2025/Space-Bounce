@@ -1,15 +1,20 @@
 import pygame, sys, math
 from Ball import *
 
-class Player():
+class Player(Ball):
     def __init__(self, maxSpeed=4, startPos=[0,0]):
         Ball.__init__(self, [0,0], startPos)
-        self.images = [pygame.image.load("Images/Player/Ship.png")]
+        self.baseImage = pygame.image.load("Images/Player/Ship.png")
         self.imagedead = pygame.image.load("Images/Player/DestroyedShip.png")
-        self.frame = 0        
-        self.image = self.images[self.frame]
+        self.image = self.baseImage
         self.rect = self.image.get_rect()
+        
         self.maxSpeed = maxSpeed
+        self.angle = 0
+        self.speed = 0
+        self.turnSpeed = 2
+        self.accSpeed = 1
+        
         self.kind = "player"
         
         self.fireSound=pygame.mixer.Sound("Sounds/PlayerSounds/laser.mp3")
@@ -18,22 +23,33 @@ class Player():
 
     def goKey(self, direction):
         if direction == "left":
-            self.speedx = -self.maxSpeed
+            self.angle += self.turnSpeed
         elif direction == "right":
-            self.speedx = self.maxSpeed
+            self.angle -= self.turnSpeed
         elif direction == "up":
-            self.speedy = -self.maxSpeed
+            self.speed += self.accSpeed
         elif direction == "down":
-            self.speedy = self.maxSpeed
-        elif direction == "sleft":
-            self.speedx = 0
-        elif direction == "sright":
-            self.speedx = 0
-        elif direction == "sup":
-            self.speedy = 0
-        elif direction == "sdown":
-            self.speedy = 0
+            self.speedy -= self.accSpeed
+        
                     
+                    
+    def move(self):
+        self.didBounceX = False
+        self.didBounceY = False
+        if self.speed > self.maxSpeed:
+            self.speed = self.maxSpeed
+        elif self.speed < -self.maxSpeed:
+            self.speed = -self.maxSpeed
+        self.angle %= 360
+        
+        print(self.speed, self.angle)
+        
+    def animate(self):
+        rot_image = pygame.transform.rotate(self.baseImage, self.angle)
+        rot_rect = self.rect.copy()
+        rot_rect.center = rot_image.get_rect().center
+        rot_image = rot_image.subsurface(rot_rect)
+        self.image = rot_image
             
     def ballCollide(self, other):
         if self != other:

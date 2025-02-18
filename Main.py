@@ -26,37 +26,37 @@ if sound:
 else:
     print("No Sound")
     
+keys = []
 
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit();
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_a or event.key == pygame.K_LEFT:
-                player.goKey("left")
-            elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
-                player.goKey("right")
-            elif event.key == pygame.K_w or event.key == pygame.K_UP:
-                player.goKey("up")
-            elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
-                player.goKey("down")
+            if event.key == pygame.K_a:
+                keys += ["a"]
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_d:
+                keys += ["d"]
             elif event.key == pygame.K_SPACE:
                 player.goKey("space")
                 
             elif event.key == pygame.K_p:
                 balls[0].die()
         elif event.type == pygame.KEYUP:
-            if event.key == pygame.K_a or event.key == pygame.K_LEFT:
-                player.goKey("sleft")
-            elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
-                player.goKey("sright")
-            elif event.key == pygame.K_w or event.key == pygame.K_UP:
-                player.goKey("sup")
-            elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
-                player.goKey("sdown")   
+            if event.key == pygame.K_a:
+                keys.remove("a")
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_d:
+                keys.remove("d")
             elif event.key == pygame.K_SPACE:
                 player.goKey("sspace")   
         
+    
+    if "a" in keys:
+        player.goKey("left")
+    elif "d" in keys:
+        player.goKey("right")
      
     counter += 1
     if counter >= 100:  
@@ -68,7 +68,8 @@ while True:
                 balls.remove(balls[-1])
                 break
                 
-            
+    player.update(size)
+    
     for ball in balls:
         ball.update(size)
         
