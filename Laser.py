@@ -9,6 +9,7 @@ class Laser():
         self.kind = "laser"
         self.kind = "player"
 
+
 def ballCollide(self, other):
         if other == Ball:
             self.remove

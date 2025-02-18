@@ -5,22 +5,23 @@ class Player():
     def __init__(self, maxSpeed=4, startPos=[0,0]):
         Ball.__init__(self, [0,0], startPos)
         self.images = [pygame.image.load("Images/Player/Ship.png")]
-        self.frame = 0
-        
+        self.imagedead = pygame.image.load("Images/Player/DestroyedShip.png")
+        self.frame = 0        
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect()
         self.maxSpeed = maxSpeed
         self.kind = "player"
 
+
     def goKey(self, direction):
         if direction == "left":
-            self.speedy = self.maxSpeed
+            self.speedx = -self.maxSpeed
         elif direction == "right":
-            self.speedy = self.maxSpeed
+            self.speedx = self.maxSpeed
         elif direction == "up":
-            self.speedy = self.maxSpeed
-        elif direction == "down":
             self.speedy = -self.maxSpeed
+        elif direction == "down":
+            self.speedy = self.maxSpeed
         elif direction == "sleft":
             self.speedx = 0
         elif direction == "sright":

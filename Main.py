@@ -10,7 +10,6 @@ except:
     sound = False
 
 clock = pygame.time.Clock();
-
 size = [900, 700]
 screen = pygame.display.set_mode(size)
 background = pygame.image.load("Images/Other/Background.png")
@@ -26,6 +25,7 @@ if sound:
     pygame.mixer.music.play()
 else:
     print("No Sound")
+    
 
 while True:
     for event in pygame.event.get():
@@ -57,18 +57,17 @@ while True:
             elif event.key == pygame.K_SPACE:
                 player.goKey("sspace")   
         
-    
-    
      
     counter += 1
     if counter >= 100:  
         balls += [Ball([random.randint(-7,7), random.randint(-7,7)],
-                [random.randint(100, 700), random.randint(100, 500)])
+                [random.randint(0, 700), random.randint(0, 500)])
         ]
         for ball in balls:
             if balls[-1].ballCollide(ball):
                 balls.remove(balls[-1])
                 break
+                
             
     for ball in balls:
         ball.update(size)
@@ -85,11 +84,8 @@ while True:
     screen.blit(background, (0, 0))
     for ball in balls:
         screen.blit(ball.image, ball.rect)
-    
     screen.blit(player.image, player.rect)
     pygame.display.flip()
-    
-    
     
     #FFFFFF
     
