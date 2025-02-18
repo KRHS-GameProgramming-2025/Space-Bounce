@@ -41,7 +41,7 @@ while True:
             elif event.key == pygame.K_SPACE:
                 player.goKey("space")
                 
-            elif event.key == pygame.K_p:
+        elif event.key == pygame.K_p:
                 balls[0].die()
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
