@@ -1,6 +1,5 @@
 import pygame, sys, math
 
-self.hitSound=pygame.mixer.Sound("Sounds/Other/hit target explosion.mp3")
 
 class Laser():
     def __init__(self, maxSpeed=4, startPos=[0,0]):
@@ -10,6 +9,8 @@ class Laser():
         self.maxSpeed = maxSpeed
         self.kind = "laser"
         self.kind = "player"
+        self.hitSound=pygame.mixer.Sound("Sounds/Other/hit target explosion.mp3")
+
 
 def hit(self):
     self.hitSound.play()
