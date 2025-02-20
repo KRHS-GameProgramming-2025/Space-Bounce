@@ -73,6 +73,7 @@ class Ball():
         
     def die(self):
         self.deathSound.play()
+        print("dead")
 
     def getDist(self, other):
         x1 = self.rect.centerx
