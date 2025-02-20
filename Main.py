@@ -35,9 +35,13 @@ while True:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
                 keys += ["a"]
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_d:
+            elif event.key == pygame.K_d:
                 keys += ["d"]
+            elif event.key == pygame.K_w:
+                keys += ["w"]
+            elif event.key == pygame.K_s:
+                keys += ["s"]
+                
             elif event.key == pygame.K_SPACE:
                 player.goKey("space")
             elif event.key == pygame.K_p:
@@ -52,17 +56,23 @@ while True:
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
                 keys.remove("a")
-        elif event.type == pygame.KEYUP:
-            if event.key == pygame.K_d:
+            elif event.key == pygame.K_d:
                 keys.remove("d")
-            elif event.key == pygame.K_SPACE:
-                player.goKey("sspace")   
+            elif event.key == pygame.K_w:
+                keys.remove("w") 
+            elif event.key == pygame.K_s:
+                keys.remove("s")
         
     
     if "a" in keys:
         player.goKey("left")
     elif "d" in keys:
         player.goKey("right")
+    elif "w" in keys:
+        player.goKey("up")
+    elif "s" in keys:
+        player.goKey("down")
+        
      
     counter += 1
     if counter >= 100:  
