@@ -75,9 +75,11 @@ while True:
      
     counter += 1
     if counter >= 100:  
+        print(counter)
         balls += [Ball([random.randint(-7,7), random.randint(-7,7)],
                 [random.randint(0, 700), random.randint(0, 500)])
         ]
+        counter = 0
         for ball in balls:
             if balls[-1].ballCollide(ball):
                 balls.remove(balls[-1])
