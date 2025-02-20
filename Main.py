@@ -45,7 +45,6 @@ while True:
             elif event.key == pygame.K_SPACE:
                 player.goKey("space")
             elif event.key == pygame.K_p:
-                print("DO DEATH")
                 balls[0].die()
             elif event.key == pygame.K_o:
                 player[0].death()
