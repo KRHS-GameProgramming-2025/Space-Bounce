@@ -45,14 +45,14 @@ while True:
             elif event.key == pygame.K_SPACE:
                 player.goKey("space")
                 
-		    elif event.key == pygame.K_p:
-		            balls[0].die()
-		    elif event.key == pygame.K_o:
-		            player[0].death()
-		    elif event.key == pygame.K_l:
-		            player[0].fire()
-		    elif event.key == pygame.K_t:
-		            laser[0].hit()
+            elif event.key == pygame.K_p:
+                    balls[0].die()
+            elif event.key == pygame.K_o:
+                    player[0].death()
+            elif event.key == pygame.K_l:
+                    player[0].fire()
+            elif event.key == pygame.K_t:
+                    laser[0].hit()
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
                 keys.remove("a")
