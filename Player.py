@@ -8,12 +8,14 @@ class Player(Ball):
         self.imagedead = pygame.image.load("Images/Player/DestroyedShip.png")
         self.image = self.baseImage
         self.rect = self.image.get_rect()
+        self.x = self.rect.centerx
+        self.y = self.rect.centery
         
         self.maxSpeed = maxSpeed
-        self.angle = 0
+        self.angle = 90
         self.speed = 0
         self.turnSpeed = 2
-        self.accSpeed = 1
+        self.accSpeed = .1
         
         self.kind = "player"
         
@@ -29,20 +31,23 @@ class Player(Ball):
         elif direction == "up":
             self.speed += self.accSpeed
         elif direction == "down":
-            self.speedy -= self.accSpeed
+            self.speed -= self.accSpeed
         
                     
                     
     def move(self):
-        self.didBounceX = False
-        self.didBounceY = False
         if self.speed > self.maxSpeed:
             self.speed = self.maxSpeed
         elif self.speed < -self.maxSpeed:
             self.speed = -self.maxSpeed
         self.angle %= 360
         
-        print(self.speed, self.angle)
+        self.x += math.cos(math.radians(self.angle))*self.speed
+        self.y += -math.sin(math.radians(self.angle))*self.speed
+        
+        self.rect.center = [round(self.x), round(self.y)]
+        
+        
         
     def animate(self):
         rot_image = pygame.transform.rotate(self.baseImage, self.angle)
