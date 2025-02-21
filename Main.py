@@ -19,12 +19,12 @@ player = Player(4, [900/2, 700/2])
 balls = [Ball()]
 
 
-#if sound: 
-   # pygame.mixer.music.load("Sounds/Music/SkyFire.mp3")
-   # pygame.mixer.music.set_volume(.25)
-   # pygame.mixer.music.play(-1)
-#else:
-   # print("No Sound")
+if sound: 
+    pygame.mixer.music.load("Sounds/Music/SkyFire.mp3")
+    pygame.mixer.music.set_volume(.25)
+    pygame.mixer.music.play(-1)
+else:
+   print("No Sound")
     
 keys = []
 
@@ -47,11 +47,11 @@ while True:
             elif event.key == pygame.K_p:
                 balls[0].die()
             elif event.key == pygame.K_o:
-                player[0].death()
+                player.death()
             elif event.key == pygame.K_l:
-                player[0].fire()
-            elif event.key == pygame.K_t:
-                laser[0].hit()
+                player.fire()
+            # ~ elif event.key == pygame.K_t:
+                # ~ lasers[0].hit()
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
                 keys.remove("a")
