@@ -1,7 +1,7 @@
 import pygame, sys, math
 
 class Ball():
-    def __init__(self, speed = [1,1], startPos=[0,0]):
+    def __init__(self, speed = [1,1], startPos=[350,250]):
         self.images = [pygame.image.load("Images/Ball/Ball1.png"),
                       pygame.image.load("Images/Ball/Ball2.png"),
                       pygame.image.load("Images/Ball/Ball3.png"),
@@ -12,8 +12,8 @@ class Ball():
         self.frameMax = len(self.images)-1 
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect()
-        self.speedy = speed[1]
-        self.speedx = speed[0]
+        self.speedy = speed[0]
+        self.speedx = speed[1]
         self.speed = [self.speedx, self.speedy]
         self.rad = (self.rect.height/2 +self.rect.width/2)/2
         
