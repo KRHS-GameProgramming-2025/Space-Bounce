@@ -1,5 +1,6 @@
 import pygame, sys, math
 from Ball import *
+from Laser import *
 
 class Player(Ball):
     def __init__(self, maxSpeed=4, startPos=[0,0]):
@@ -20,8 +21,9 @@ class Player(Ball):
         self.kind = "player"
         
         self.fireSound=pygame.mixer.Sound("Sounds/PlayerSounds/laser.mp3")
+        self.fireSound.set_volume(.075)
         self.dieSound=pygame.mixer.Sound("Sounds/PlayerSounds/player death.mp3")
-
+        self.dieSound.set_volume(.25)
 
     def goKey(self, direction):
         if direction == "left":
@@ -67,7 +69,9 @@ class Player(Ball):
         return False  
         
     def death(self):
+        
         self.dieSound.play()
     
     def fire(self):
         self.fireSound.play()
+        return Laser(4,self.rect.center)

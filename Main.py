@@ -27,6 +27,7 @@ else:
    print("No Sound")
     
 keys = []
+lasers=[]
 
 while True:
     for event in pygame.event.get():
@@ -49,9 +50,9 @@ while True:
             elif event.key == pygame.K_o:
                 player.death()
             elif event.key == pygame.K_l:
-                player.fire()
-            # ~ elif event.key == pygame.K_t:
-                # ~ lasers[0].hit()
+                lasers+=[player.fire()]
+            elif event.key == pygame.K_t:
+                lasers[0].hit()
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
                 keys.remove("a")
