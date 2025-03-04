@@ -74,7 +74,7 @@ while True:
         
      
     counter += 1
-    if counter >= 100:  
+    if counter >= 150:  
         balls += [Ball([random.randint(-7,7), random.randint(-7,7)],
                 [random.randint(0, 700), random.randint(0, 500)])
         ]
