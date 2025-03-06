@@ -96,7 +96,7 @@ while True:
         for hitBall in balls:
             if hittingBall.ballCollide(hitBall):
                 if hittingBall.kind == "player":
-                    balls.remove(hitBall)
+                    ball.remove(hitBall)
     
     
     screen.fill((64, 128, 255))
