@@ -16,7 +16,7 @@ class Player(Ball):
         self.angle = 90
         self.speed = 0
         self.turnSpeed = 2
-        self.accSpeed = .1
+        self.accSpeed = .2
         
         self.kind = "player"
         
@@ -33,9 +33,8 @@ class Player(Ball):
         elif direction == "up":
             self.speed += self.accSpeed
         elif direction == "down":
-            self.speed -= self.accSpeed
-        
-                    
+            self.speed -= self.accSpeed        
+                  
                     
     def move(self):
         if self.speed > self.maxSpeed:
@@ -47,8 +46,7 @@ class Player(Ball):
         self.x += math.cos(math.radians(self.angle))*self.speed
         self.y += -math.sin(math.radians(self.angle))*self.speed
         
-        self.rect.center = [round(self.x), round(self.y)]
-        
+        self.rect.center = [round(self.x), round(self.y)]        
         
         
     def animate(self):
@@ -57,20 +55,17 @@ class Player(Ball):
         rot_rect.center = rot_image.get_rect().center
         rot_image = rot_image.subsurface(rot_rect)
         self.image = rot_image
+         
             
     def ballCollide(self, other):
-        if self != other:
-            if self.rect.right > other.rect.left:
-                if self.rect.left < other.rect.right:
-                    if self.rect.bottom > other.rect.top:
-                        if self.rect.top < other.rect.bottom:
-                            if self.getDist(other) < self.rad + other.rad:
-                                return True
-        return False  
+        if other == Ball():
+            print("die")
+            
         
     def death(self):
         
         self.dieSound.play()
+    
     
     def fire(self):
         self.fireSound.play()

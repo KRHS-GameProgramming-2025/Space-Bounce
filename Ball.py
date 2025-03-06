@@ -17,6 +17,14 @@ class Ball():
         self.speed = [self.speedx, self.speedy]
         self.rad = (self.rect.height/2 +self.rect.width/2)/2
         
+        self.explosionImages = [pygame.image.load("Images/Ball/BallExplode1.png"),
+                      pygame.image.load("Images/Ball/BallExplode2.png"),
+                      pygame.image.load("Images/Ball/BallExplode3.png"),
+                      pygame.image.load("Images/Ball/BallExplode4.png"),
+                      pygame.image.load("Images/Ball/BallExplode5.png"),
+                      pygame.image.load("Images/Ball/BallExplode6.png"),
+                      pygame.image.load("Images/Ball/BallExplode7.png"),]
+        
         self.rect = self.rect.move(startPos)
         
         self.didBounceX = False
@@ -28,8 +36,6 @@ class Ball():
         
         self.deathSound=pygame.mixer.Sound("Sounds/Other/ball explosion.mp3")
         
-
-        
     
     def update(self, size):
         self.move()
@@ -38,6 +44,7 @@ class Ball():
         self.didBounceY = False
         self.animationTimer += 1
         self.animate()
+        
 
     def move(self):
         self.didBounceX = False
@@ -72,8 +79,10 @@ class Ball():
                                 return True
         return False       
         
+        
     def die(self):
         self.deathSound.play()
+        
 
     def getDist(self, other):
         x1 = self.rect.centerx

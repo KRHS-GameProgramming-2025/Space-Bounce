@@ -3,6 +3,7 @@ from Player import *
 from Ball import *
 from Laser import *
 
+
 try:
     pygame.mixer.init()
     sound = True
