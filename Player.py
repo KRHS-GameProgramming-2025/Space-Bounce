@@ -63,10 +63,10 @@ class Player(Ball):
             
         
     def death(self):
-        
         self.dieSound.play()
     
     
     def fire(self):
         self.fireSound.play()
         return Laser(4,self.rect.center)
+        
