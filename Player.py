@@ -64,6 +64,7 @@ class Player(Ball):
         
     def death(self):
         self.dieSound.play()
+        self.image = self.imagedead
     
     
     def fire(self):

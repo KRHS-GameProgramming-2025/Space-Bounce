@@ -73,11 +73,13 @@ while True:
         player.goKey("up")
     elif "s" in keys:
         player.goKey("down")
+    elif "space" in keys:
+        player.fire()
         
      
     counter += 1
-    if counter >= 150:  
-        balls += [Ball([random.randint(-7,7), random.randint(-7,7)],
+    if counter >= 250:  
+        balls += [Ball([random.randint(-4,4), random.randint(-4,4)],
                 [random.randint(0, 700), random.randint(0, 500)])
         ]
         counter = 0
