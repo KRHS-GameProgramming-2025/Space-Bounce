@@ -78,7 +78,7 @@ while True:
         
      
     counter += 1
-    if counter >= 250:  
+    if counter >= 25:  
         balls += [Ball([random.randint(-4,4), random.randint(-4,4)],
                 [random.randint(0, 700), random.randint(0, 500)])
         ]
@@ -92,13 +92,10 @@ while True:
     
     for ball in balls:
         ball.update(size)
+        if player.ballCollide(ball):
+            sys.exit()
         
-        
-    for hittingBall in balls:
-        for hitBall in balls:
-            if hittingBall.ballCollide(hitBall):
-                if hittingBall.kind == "player":
-                    ball.remove(hitBall)
+
     
     
     screen.fill((64, 128, 255))

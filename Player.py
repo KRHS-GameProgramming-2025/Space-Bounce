@@ -58,11 +58,19 @@ class Player(Ball):
          
             
     def ballCollide(self, other):
-        if other == Ball():
-            print("die")
+        if self != other:
+            if self.rect.right > other.rect.left:
+                if self.rect.left < other.rect.right:
+                    if self.rect.bottom > other.rect.top:
+                        if self.rect.top < other.rect.bottom:
+                            if self.getDist(other) < self.rad + other.rad:
+                                self.death()
+                                return True
+        return False       
             
         
     def death(self):
+        print("dead")
         self.dieSound.play()
         self.image = self.imagedead
     
