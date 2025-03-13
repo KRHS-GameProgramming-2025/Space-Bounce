@@ -15,6 +15,7 @@ size = [900, 700]
 screen = pygame.display.set_mode(size)
 background = pygame.image.load("Images/Other/Background.png")
 
+
 counter = 0;       
 player = Player(4, [900/2, 700/2])
 balls = [Ball()]
@@ -96,10 +97,13 @@ while True:
             sys.exit()
         
 
-    
+    title = pygame.image.load("Images/Other/Title.png")
+    death = pygame.image.load("Images/Other/Deathscreen.png")
     
     screen.fill((64, 128, 255))
     screen.blit(background, (0, 0))
+    screen.blit(title, (0, 0))
+    screen.blit(death, (0, 0))
     for ball in balls:
         screen.blit(ball.image, ball.rect)
     screen.blit(player.image, player.rect)
