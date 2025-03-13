@@ -13,8 +13,18 @@ except:
 clock = pygame.time.Clock();
 size = [900, 700]
 screen = pygame.display.set_mode(size)
-background = pygame.image.load("Images/Other/Background.png")
 
+mode="start"
+
+title = pygame.image.load("Images/Other/Title.png")
+
+
+background = pygame.image.load("Images/Other/Background.png")
+while mode =="start":
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                mode="play"
 
 counter = 0;       
 player = Player(4, [900/2, 700/2])
@@ -97,7 +107,6 @@ while True:
             sys.exit()
         
 
-    title = pygame.image.load("Images/Other/Title.png")
     death = pygame.image.load("Images/Other/Deathscreen.png")
     
     screen.fill((64, 128, 255))
