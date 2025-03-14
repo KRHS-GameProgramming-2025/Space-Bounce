@@ -15,8 +15,15 @@ class Laser():
 def hit(self):
     self.hitSound.play()
     
-
+    
 def ballCollide(self, other):
         if other == Ball:
-            self.remove
-            other.remove
+            if self.rect.right > other.rect.left:
+                if self.rect.left < other.rect.right:
+                    if self.rect.bottom > other.rect.top:
+                        if self.rect.top < other.rect.bottom:
+                            if self.getDist(other) < self.rad + other.rad:
+                                self.remove
+                                other.remove
+                                return True
+        return False       

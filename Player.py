@@ -2,6 +2,7 @@ import pygame, sys, math
 from Ball import *
 from Laser import *
 
+
 class Player(Ball):
     def __init__(self, maxSpeed=4, startPos=[0,0]):
         Ball.__init__(self, [0,0], startPos)
@@ -24,6 +25,7 @@ class Player(Ball):
         self.fireSound.set_volume(.075)
         self.dieSound=pygame.mixer.Sound("Sounds/PlayerSounds/player death.mp3")
         self.dieSound.set_volume(.25)
+        
 
     def goKey(self, direction):
         if direction == "left":
@@ -66,14 +68,42 @@ class Player(Ball):
                             if self.getDist(other) < self.rad + other.rad:
                                 self.death()
                                 return True
-        return False       
-            
+        return False     
+         
+         
+    def wallCollide(self, size):
+        width = size[0]
+        height = size[1]
+        
+        if not self.didBounceY:
+            if self.rect.bottom > height:
+                self.didBounceY = True
+                
+            if self.rect.top < 0:
+                self.speedy = -self.speedy
+                self.move()
+                self.speedy = 0
+                self.didBounceY = True
+                
+        if not self.didBounceY:
+            if self.rect.right > width:
+                self.speedx = -self.speedx
+                self.move()
+                self.speedx = 0
+                self.didBounceX = True
+                
+            if self.rect.left < 0:
+                self.speedx = -self.speedx
+                self.move()
+                self.speedx = 0
+                self.didBounceX = True     
+         
         
     def death(self):
         print("dead")
-        self.dieSound.play()
         self.image = self.imagedead
-    
+        self.dieSound.play()
+        
     
     def fire(self):
         self.fireSound.play()

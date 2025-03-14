@@ -1,3 +1,5 @@
+#------------------Variables------------------
+
 import pygame, sys, math, random
 from Player import *
 from Ball import *
@@ -16,7 +18,7 @@ screen = pygame.display.set_mode(size)
 
 mode="start"
 
-title = pygame.image.load("Images/Other/Title.png")
+title = pygame.image.load("Images/Other/TitleScreen.png")
 
 
 background = pygame.image.load("Images/Other/Background.png")
@@ -30,7 +32,6 @@ counter = 0;
 player = Player(4, [900/2, 700/2])
 balls = [Ball()]
 
-
 if sound: 
     pygame.mixer.music.load("Sounds/Music/SkyFire.mp3")
     pygame.mixer.music.set_volume(.25)
@@ -40,6 +41,8 @@ else:
     
 keys = []
 lasers=[]
+
+#------------------Main Loop------------------
 
 while True:
     for event in pygame.event.get():
@@ -74,8 +77,7 @@ while True:
                 keys.remove("w") 
             elif event.key == pygame.K_s:
                 keys.remove("s")
-        
-    
+                
     if "a" in keys:
         player.goKey("left")
     elif "d" in keys:
@@ -89,7 +91,7 @@ while True:
         
      
     counter += 1
-    if counter >= 25:  
+    if counter >= 250:  
         balls += [Ball([random.randint(-4,4), random.randint(-4,4)],
                 [random.randint(0, 700), random.randint(0, 500)])
         ]
@@ -118,8 +120,7 @@ while True:
     screen.blit(player.image, player.rect)
     pygame.display.flip()
     
-    #FFFFFF
+    #FFFFF
     
     clock.tick(100)
     #print(clock.get_fps(), len(balls))
-
