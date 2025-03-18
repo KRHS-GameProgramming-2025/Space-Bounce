@@ -107,5 +107,5 @@ class Player(Ball):
     
     def fire(self):
         self.fireSound.play()
-        return Laser(4,self.rect.center)
+        # ~ return Laser(4,self.rect.center)
         
