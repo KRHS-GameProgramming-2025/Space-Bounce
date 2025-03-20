@@ -18,15 +18,15 @@ screen = pygame.display.set_mode(size)
 
 mode="start" 
 
-# ~ title = pygame.image.load("Images/Other/Title.png")
+title = pygame.image.load("Images/Other/TitleScreen.png")
 
 
 background = pygame.image.load("Images/Other/Background.png")
-# ~ while mode =="start":
-    # ~ for event in pygame.event.get():
-        # ~ if event.type == pygame.KEYDOWN:
-            # ~ if event.key == pygame.K_SPACE:
-                # ~ mode="play"
+while mode =="start":
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                mode="play"
 
 counter = 0;       
 player = Player(4, [900/2, 700/2])
@@ -115,7 +115,7 @@ while True:
     
     screen.fill((64, 128, 255))
     screen.blit(background, (0, 0))
-    # ~ screen.blit(title, (0, 0))
+    screen.blit(title, (0, 0))
     # ~ screen.blit(death, (0, 0))
     for laser in lasers:
         screen.blit(laser.image, laser.rect)
