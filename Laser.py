@@ -2,10 +2,13 @@ import pygame, sys, math
 from Ball import *
 
 class Laser(Ball):
-    def __init__(self, maxSpeed=4, startPos=[0,0]):
+    def __init__(self, maxSpeed=4, angle=0,startPos=[0,0]):
         Ball.__init__(self, [0,0], startPos)
         self.image = pygame.image.load("Images/Other/Laser.png")
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect(center=startPos)
+        self.x = self.rect.centerx
+        self.y = self.rect.centery
+        
         self.maxSpeed = maxSpeed
         self.angle = angle
         self.speed = self.maxSpeed
