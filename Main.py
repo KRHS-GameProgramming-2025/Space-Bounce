@@ -105,8 +105,8 @@ while True:
     
     for ball in balls:
         ball.update(size)
-        if player.ballCollide(ball):
-            sys.exit()
+        # ~ if player.ballCollide(ball):
+            # ~ sys.exit()
         
 
     # ~ death = pygame.image.load("Images/Other/Deathscreen.png")
@@ -115,6 +115,8 @@ while True:
     screen.blit(background, (0, 0))
     # ~ screen.blit(title, (0, 0))
     # ~ screen.blit(death, (0, 0))
+    for laser in lasers:
+        screen.blit(laser.image, laser.rect)
     for ball in balls:
         screen.blit(ball.image, ball.rect)
     screen.blit(player.image, player.rect)

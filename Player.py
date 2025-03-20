@@ -9,7 +9,7 @@ class Player(Ball):
         self.baseImage = pygame.image.load("Images/Player/Ship.png")
         self.imagedead = pygame.image.load("Images/Player/DestroyedShip.png")
         self.image = self.baseImage
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect(center=startPos)
         self.x = self.rect.centerx
         self.y = self.rect.centery
         
@@ -107,5 +107,5 @@ class Player(Ball):
     
     def fire(self):
         self.fireSound.play()
-        # ~ return Laser(4,self.rect.center)
+        return Laser(4,self.rect.center)
         
