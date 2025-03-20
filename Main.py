@@ -16,7 +16,7 @@ clock = pygame.time.Clock();
 size = [900, 700]
 screen = pygame.display.set_mode(size)
 
-mode="start"
+mode="start" 
 
 # ~ title = pygame.image.load("Images/Other/Title.png")
 
