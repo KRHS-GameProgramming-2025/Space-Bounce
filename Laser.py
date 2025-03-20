@@ -39,7 +39,5 @@ class Laser(Ball):
                         if self.rect.bottom > other.rect.top:
                             if self.rect.top < other.rect.bottom:
                                 if self.getDist(other) < self.rad + other.rad:
-                                    self.remove
-                                    other.remove
                                     return True
             return False       

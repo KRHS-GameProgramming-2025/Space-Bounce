@@ -4,13 +4,17 @@ import pygame, sys, math, random
 from Player import *
 from Ball import *
 from Laser import *
+from HUD import *
 
+pygame.init()
 
 try:
     pygame.mixer.init()
     sound = True
 except:
     sound = False
+    
+if not pygame.font: print("Warning, fonts disabled")
 
 clock = pygame.time.Clock();
 size = [900, 700]
@@ -31,6 +35,9 @@ background = pygame.image.load("Images/Other/Background.png")
 counter = 0;       
 player = Player(4, [900/2, 700/2])
 balls = [Ball()]
+
+score = Hud("",0,[0,0])
+points = 0
 
 if sound: 
     pygame.mixer.music.load("Sounds/Music/SkyFire.mp3")
@@ -91,7 +98,7 @@ while True:
         
      
     counter += 1
-    if counter >= 250:  
+    if counter >= 100:  
         balls += [Ball([random.randint(-4,4), random.randint(-4,4)],
                 [random.randint(0, 700), random.randint(0, 500)])
         ]
@@ -105,6 +112,12 @@ while True:
     
     for ball in balls:
         ball.update(size)
+        for laser in lasers:
+            if ball.ballCollide(laser):
+                points += 50
+                balls.remove(ball)
+                lasers.remove(laser)
+                score.update(points)
         # ~ if player.ballCollide(ball):
             # ~ sys.exit()
     for laser in lasers:
@@ -122,6 +135,7 @@ while True:
     for ball in balls:
         screen.blit(ball.image, ball.rect)
     screen.blit(player.image, player.rect)
+    screen.blit(score.image, score.rect)
     pygame.display.flip()
     
     #FFFFF
