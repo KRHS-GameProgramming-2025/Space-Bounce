@@ -26,9 +26,7 @@ class Ball():
                       pygame.image.load("Images/Ball/BallExplode7.png"),]
         
         self.rect = self.rect.move(startPos)
-        
-        self.didBounceX = False
-        self.didBounceY = False
+
         
         self.kind = "ball"
         self.animationTimer = 0
@@ -40,8 +38,7 @@ class Ball():
     def update(self, size):
         self.move()
         
-        self.didBounceX = False
-        self.didBounceY = False
+       
         self.animationTimer += 1
         self.animate()
         

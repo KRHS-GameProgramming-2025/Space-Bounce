@@ -59,7 +59,7 @@ while True:
                 keys += ["s"]
                 
             elif event.key == pygame.K_SPACE:
-                player.goKey("space")
+                lasers+=[player.fire()]
             elif event.key == pygame.K_p:
                 balls[0].die()
             elif event.key == pygame.K_o:
@@ -107,6 +107,8 @@ while True:
         ball.update(size)
         # ~ if player.ballCollide(ball):
             # ~ sys.exit()
+    for laser in lasers:
+        laser.update(size)
         
 
     # ~ death = pygame.image.load("Images/Other/Deathscreen.png")
