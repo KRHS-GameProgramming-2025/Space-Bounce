@@ -1,7 +1,7 @@
 import pygame, sys, math
 
 class Ball():
-    def __init__(self, speed = [1,1], startPos=[350,250]):
+    def __init__(self, speed = [1,1], startPos=[1000,1000]):
         self.images = [pygame.image.load("Images/Ball/Ball1.png"),
                       pygame.image.load("Images/Ball/Ball2.png"),
                       pygame.image.load("Images/Ball/Ball3.png"),
@@ -37,8 +37,6 @@ class Ball():
     
     def update(self, size):
         self.move()
-        
-       
         self.animationTimer += 1
         self.animate()
         

@@ -22,6 +22,8 @@ screen = pygame.display.set_mode(size)
 
 mode="start" 
 
+
+
 # ~ title = pygame.image.load("Images/Other/TitleScreen.png")
 
 
@@ -118,8 +120,8 @@ while True:
                 balls.remove(ball)
                 lasers.remove(laser)
                 score.update(points)
-        # ~ if player.ballCollide(ball):
-            # ~ sys.exit()
+        if player.ballCollide(ball):
+            sys.exit()
     for laser in lasers:
         laser.update(size)
         
