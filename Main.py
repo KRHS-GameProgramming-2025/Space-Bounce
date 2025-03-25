@@ -69,14 +69,9 @@ while True:
                 
             elif event.key == pygame.K_SPACE:
                 lasers+=[player.fire()]
-            elif event.key == pygame.K_p:
-                balls[0].die()
             elif event.key == pygame.K_o:
                 player.death()
-            elif event.key == pygame.K_l:
-                lasers+=[player.fire()]
-            elif event.key == pygame.K_t:
-                lasers[0].hit()
+            
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_a:
                 keys.remove("a")
@@ -118,6 +113,7 @@ while True:
             if ball.ballCollide(laser):
                 points += 50
                 balls.remove(ball)
+                laser.hit()
                 lasers.remove(laser)
                 score.update(points)
         if player.ballCollide(ball):
