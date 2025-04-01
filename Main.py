@@ -1,6 +1,6 @@
 #------------------Variables------------------
 
-import pygame, sys, math, random
+import pygame, sys, math, random, time
 from Player import *
 from Ball import *
 from Laser import *
@@ -21,15 +21,6 @@ size = [900, 700]
 screen = pygame.display.set_mode(size)
 
 mode="start" 
-
-
-
-# ~ 
-
-
-
-
-
 
 if sound: 
     pygame.mixer.music.load("Sounds/Music/SkyFire.mp3")
@@ -58,7 +49,8 @@ while True:
         clock.tick(100)
         
     background = pygame.image.load("Images/Other/Background.png")
-    counter = 0;       
+    counter = 0;  
+    deathCounter = 0;     
     player = Player(4, [900/2, 700/2])
     balls = [Ball()]
 
@@ -130,11 +122,16 @@ while True:
                     laser.hit()
                     lasers.remove(laser)
                     score.update(points)
+                    
+        
             if player.ballCollide(ball):
                 player.death()
                 mode="end"
+                    
+                    
         for laser in lasers:
             laser.update(size)
+            
                     
         screen.fill((64, 128, 255))
         screen.blit(background, (0, 0))
@@ -157,6 +154,8 @@ while True:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     mode="start"
+                    
+                    
         screen.fill((64, 128, 255))
         screen.blit(background, (0, 0))
         pygame.display.flip()

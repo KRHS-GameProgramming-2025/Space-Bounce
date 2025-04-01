@@ -18,8 +18,21 @@ class Laser(Ball):
 
     def update(self, size):
         self.move()
+        self.wallCollide(size)
         
-        
+    def wallCollide(self, size):
+        width = size[0]
+        height = size[1]
+       
+        if self.y > height:
+            self.y = 0
+        elif self.y < 0:
+            self.y = height
+        if self.x > width:
+            self.x = 0
+        elif self.x < 0:
+            self.x = width
+            
     def move(self):
         self.angle %= 360
         

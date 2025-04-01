@@ -1,4 +1,4 @@
-import pygame, sys, math
+import pygame, sys, math, time
 from Ball import *
 from Laser import *
 
@@ -18,7 +18,7 @@ class Player(Ball):
         self.speed = 0
         self.turnSpeed = 2
         self.accSpeed = .2
-        
+    
         self.kind = "player"
         
         self.fireSound=pygame.mixer.Sound("Sounds/PlayerSounds/laser.mp3")
@@ -49,7 +49,21 @@ class Player(Ball):
         self.y += -math.sin(math.radians(self.angle))*self.speed
         
         self.rect.center = [round(self.x), round(self.y)]        
-        
+    
+    def wallCollide(self, size):
+        width = size[0]
+        height = size[1]
+       
+        if self.y > height:
+            self.y = 0
+        elif self.y < 0:
+            self.y = height
+        if self.x > width:
+            self.x = 0
+        elif self.x < 0:
+            self.x = width
+            
+
         
     def animate(self):
         rot_image = pygame.transform.rotate(self.baseImage, self.angle)
@@ -66,41 +80,11 @@ class Player(Ball):
                     if self.rect.bottom > other.rect.top:
                         if self.rect.top < other.rect.bottom:
                             if self.getDist(other) < self.rad + other.rad:
-                                self.death()
                                 return True
         return False     
          
-         
-    def wallCollide(self, size):
-        width = size[0]
-        height = size[1]
-        
-        if not self.didBounceY:
-            if self.rect.bottom > height:
-                self.didBounceY = True
-                
-            if self.rect.top < 0:
-                self.speedy = -self.speedy
-                self.move()
-                self.speedy = 0
-                self.didBounceY = True
-                
-        if not self.didBounceY:
-            if self.rect.right > width:
-                self.speedx = -self.speedx
-                self.move()
-                self.speedx = 0
-                self.didBounceX = True
-                
-            if self.rect.left < 0:
-                self.speedx = -self.speedx
-                self.move()
-                self.speedx = 0
-                self.didBounceX = True     
-         
         
     def death(self):
-        print("dead")
         self.image = self.imagedead
         self.dieSound.play()
         
