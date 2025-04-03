@@ -101,7 +101,7 @@ while True:
             
          
         counter += 1
-        if counter >= 100:  
+        if counter >= 250:  
             balls += [Ball([random.randint(-4,4), random.randint(-4,4)],
                     [random.randint(0, 700), random.randint(0, 500)])
             ]
@@ -122,6 +122,7 @@ while True:
                     laser.hit()
                     lasers.remove(laser)
                     score.update(points)
+               
                     
         
             if player.ballCollide(ball):

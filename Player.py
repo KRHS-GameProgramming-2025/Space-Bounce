@@ -1,4 +1,4 @@
-import pygame, sys, math, time
+import pygame, sys, math, time, os
 from Ball import *
 from Laser import *
 
@@ -64,7 +64,6 @@ class Player(Ball):
             self.x = width
             
 
-        
     def animate(self):
         rot_image = pygame.transform.rotate(self.baseImage, self.angle)
         rot_rect = self.rect.copy()
@@ -88,8 +87,11 @@ class Player(Ball):
         self.image = self.imagedead
         self.dieSound.play()
         
-    
+
     def fire(self):
         self.fireSound.play()
         return Laser(8,self.angle, self.rect.center)
+   
+           
+        
         

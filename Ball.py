@@ -33,6 +33,9 @@ class Ball():
         self.animationTimerMax = 120/10
         
         self.deathSound=pygame.mixer.Sound("Sounds/Other/ball explosion.mp3")
+        
+        self.didBounceX = False
+        self.didBounceY = False
     
     def wallCollide(self, size):
         width = size[0]
@@ -42,19 +45,21 @@ class Ball():
             self.rect.top = 1
             
         elif self.rect.top < 0:
-            self.rect.bottom = height - 1
+            self.rect.bottom = height - 5
     
         if self.rect.right > width:
             self.rect.left = 1
             
         elif self.rect.left < 0:
-            self.rect.right = width - 1
+            self.rect.right = width - 5
     
     def update(self, size):
         self.move()
         self.wallCollide(size)
         self.animationTimer += 1
         self.animate()
+        self.didBounceX = False
+        self.didBounceY = False
         
 
     def move(self):
@@ -81,8 +86,14 @@ class Ball():
                     if self.rect.bottom > other.rect.top:
                         if self.rect.top < other.rect.bottom:
                             if self.getDist(other) < self.rad + other.rad:
+                                if not self.didBounceX:
+                                    self.speedx = -self.speedx
+                                    self.didBounceX = True
+                                if not self.didBounceY:
+                                    self.speedy = -self.speedy
+                                    self.didBounceY = True
                                 return True
-        return False      
+        return False
         
         
     def die(self):
