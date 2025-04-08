@@ -45,13 +45,13 @@ class Ball():
             self.rect.top = 1
             
         elif self.rect.top < 0:
-            self.rect.bottom = height - 5
+            self.rect.bottom = height
     
         if self.rect.right > width:
             self.rect.left = 1
             
         elif self.rect.left < 0:
-            self.rect.right = width - 5
+            self.rect.right = width
     
     def update(self, size):
         self.move()

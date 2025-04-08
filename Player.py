@@ -1,4 +1,4 @@
-import pygame, sys, math, time, os
+import pygame, sys, math
 from Ball import *
 from Laser import *
 
@@ -86,12 +86,13 @@ class Player(Ball):
     def death(self):
         self.image = self.imagedead
         self.dieSound.play()
-        
-
+    
+    
     def fire(self):
         self.fireSound.play()
         return Laser(8,self.angle, self.rect.center)
-   
+  
            
-        
-        
+           
+           
+           

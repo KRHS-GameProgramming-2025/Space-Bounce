@@ -50,9 +50,11 @@ while True:
         
     background = pygame.image.load("Images/Other/Background.png")
     counter = 0;  
-    deathCounter = 0;     
     player = Player(4, [900/2, 700/2])
     balls = [Ball()]
+    canShoot = True
+    shootTimer = 0
+    shootTimerMax = 1 * 100
 
     score = Hud("",0,[0,0])
     points = 0
@@ -74,7 +76,10 @@ while True:
                     keys += ["s"]
                     
                 elif event.key == pygame.K_SPACE:
-                    lasers+=[player.fire()]
+                    if canShoot:
+                        lasers+=[player.fire()]
+                        canShoot = False
+                        shootTimer = shootTimerMax
                 elif event.key == pygame.K_o:
                     player.death()
                 
@@ -96,12 +101,16 @@ while True:
             player.goKey("up")
         elif "s" in keys:
             player.goKey("down")
-        elif "space" in keys:
-            player.fire()
-            
-         
+        
+        if not canShoot and shootTimer != 0:
+            shootTimer -= 1
+        elif not canShoot and shootTimer <= 0:
+            shootTimer = 0
+            canShoot = True
+
+        
         counter += 1
-        if counter >= 250:  
+        if counter >= 200:  
             balls += [Ball([random.randint(-4,4), random.randint(-4,4)],
                     [random.randint(0, 700), random.randint(0, 500)])
             ]
@@ -112,7 +121,7 @@ while True:
                     break
                     
         player.update(size)
-        
+             
         for ball in balls:
             ball.update(size)
             for laser in lasers:
@@ -129,10 +138,10 @@ while True:
                 player.death()
                 mode="end"
                     
-                    
         for laser in lasers:
             laser.update(size)
-            
+        
+                                   
                     
         screen.fill((64, 128, 255))
         screen.blit(background, (0, 0))
