@@ -84,8 +84,14 @@ class Player(Ball):
          
         
     def death(self):
-        self.image = self.imagedead
         self.dieSound.play()
+        self.maxSpeed = 0
+        self.angle = 90
+        self.speed = 0
+        self.turnSpeed = 0
+        self.accSpeed = 0
+        self.image = self.imagedead
+    
     
     
     def fire(self):

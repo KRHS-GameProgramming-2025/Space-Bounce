@@ -55,6 +55,8 @@ while True:
     canShoot = True
     shootTimer = 0
     shootTimerMax = 1 * 100
+    deathTimer = 100
+    alive = True
 
     score = Hud("",0,[0,0])
     points = 0
@@ -135,8 +137,16 @@ while True:
                     
         
             if player.ballCollide(ball):
+                alive = False
                 player.death()
-                mode="end"
+            if alive == False:
+                deathTimer -= 1
+                if deathTimer <= 0:
+                    mode="end"
+                    deathTimer == 100
+                    alive = True
+          
+        
                     
         for laser in lasers:
             laser.update(size)
@@ -152,6 +162,7 @@ while True:
         screen.blit(player.image, player.rect)
         screen.blit(score.image, score.rect)
         pygame.display.flip()
+        print(deathTimer)
         
         #FFFFF
         
