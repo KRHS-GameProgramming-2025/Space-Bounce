@@ -56,6 +56,7 @@ while True:
     shootTimer = 0
     shootTimerMax = 1 * 100
     deathTimer = 100
+    laserTimer = 200
     alive = True
 
     score = Hud("",0,[0,0])
@@ -127,14 +128,19 @@ while True:
         for ball in balls:
             ball.update(size)
             for laser in lasers:
+                laserTimer -= 1
                 if ball.ballCollide(laser):
+                    laserTimer = 200
                     points += 50
                     balls.remove(ball)
                     laser.hit()
                     lasers.remove(laser)
                     score.update(points)
+                elif laserTimer <= 0:
+                    laserTimer = 200
+                    lasers.remove(laser)
                
-                    
+        
         
             if player.ballCollide(ball):
                 alive = False
@@ -154,7 +160,7 @@ while True:
             laser.update(size)
         
                                    
-                    
+        print(laserTimer)           
         screen.fill((64, 128, 255))
         screen.blit(background, (0, 0))
         for laser in lasers:
