@@ -140,11 +140,13 @@ while True:
                 alive = False
                 player.death()
             if alive == False:
+                canShoot = False
                 deathTimer -= 1
                 if deathTimer <= 0:
                     mode="end"
                     deathTimer == 100
                     alive = True
+                    canShoot = True
           
         
                     
@@ -162,7 +164,6 @@ while True:
         screen.blit(player.image, player.rect)
         screen.blit(score.image, score.rect)
         pygame.display.flip()
-        print(deathTimer)
         
         #FFFFF
         
