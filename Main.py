@@ -158,7 +158,6 @@ while True:
             laser.update(size)
     
     
-        print(laserTimer)                                     
         screen.fill((64, 128, 255))
         screen.blit(background, (0, 0))
         for laser in lasers:
