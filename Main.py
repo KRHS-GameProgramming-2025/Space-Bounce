@@ -30,7 +30,6 @@ else:
    print("No Sound")
     
 
-
 mode="start"
 
 #------------------Main Loop------------------
@@ -56,7 +55,7 @@ while True:
     shootTimer = 0
     shootTimerMax = 1 * 100
     deathTimer = 100
-    laserTimer = 200
+    laserTimer = 100
     alive = True
 
     score = Hud("",0,[0,0])
@@ -113,7 +112,7 @@ while True:
 
         
         counter += 1
-        if counter >= 200:  
+        if counter >= 300:  
             balls += [Ball([random.randint(-4,4), random.randint(-4,4)],
                     [random.randint(0, 700), random.randint(0, 500)])
             ]
@@ -130,17 +129,17 @@ while True:
             for laser in lasers:
                 laserTimer -= 1
                 if ball.ballCollide(laser):
-                    laserTimer = 200
+                    lasers.remove(laser)
+                    laserTimer = 100
                     points += 50
                     balls.remove(ball)
                     laser.hit()
-                    lasers.remove(laser)
                     score.update(points)
-                elif laserTimer <= 0:
-                    laserTimer = 200
+                elif laserTimer <= 0 and canShoot == True:
+                    laser.update(size)
                     lasers.remove(laser)
+                    laserTimer = 100
                
-        
         
             if player.ballCollide(ball):
                 alive = False
@@ -150,17 +149,16 @@ while True:
                 deathTimer -= 1
                 if deathTimer <= 0:
                     mode="end"
-                    deathTimer == 100
+                    deathTimer = 100
                     alive = True
                     canShoot = True
           
-        
                     
         for laser in lasers:
             laser.update(size)
-        
-                                   
-        print(laserTimer)           
+    
+    
+        print(laserTimer)                                     
         screen.fill((64, 128, 255))
         screen.blit(background, (0, 0))
         for laser in lasers:
