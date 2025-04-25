@@ -92,11 +92,14 @@ class Player(Ball):
         self.accSpeed = 0
         self.image = self.imagedead
     
+    def respawn(self):
+        self.maxSpeed = 4
+        self.angle = 90
+        self.speed = 0
+        self.turnSpeed = 2
+        self.accSpeed = .2
     
     
     def fire(self):
         self.fireSound.play()
         return Laser(8,self.angle, self.rect.center)
-  
-           
-           
