@@ -100,5 +100,3 @@ class Player(Ball):
   
            
            
-           
-           

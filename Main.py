@@ -87,13 +87,29 @@ while True:
                 
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_a:
-                    keys.remove("a")
+                    if ("a") in keys:
+                        keys.remove("a")
+                    else:
+                        keys += ["a"]
+                        keys.remove("a")
                 elif event.key == pygame.K_d:
-                    keys.remove("d")
+                    if ("d") in keys:
+                        keys.remove("d")
+                    else:
+                        keys += ["d"]
+                        keys.remove("d")
                 elif event.key == pygame.K_w:
-                    keys.remove("w") 
+                    if ("w") in keys:
+                        keys.remove("w")
+                    else:
+                        keys += ["w"]
+                        keys.remove("w")
                 elif event.key == pygame.K_s:
-                    keys.remove("s")
+                    if ("s") in keys:
+                        keys.remove("s")
+                    else:
+                        keys += ["s"]
+                        keys.remove("s")
                     
         if "a" in keys:
             player.goKey("left")
