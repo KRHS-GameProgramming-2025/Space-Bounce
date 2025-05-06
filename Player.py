@@ -98,6 +98,8 @@ class Player(Ball):
         self.speed = 0
         self.turnSpeed = 2
         self.accSpeed = .2
+        self.y = 350
+        self.x = 450
     
     
     def fire(self):

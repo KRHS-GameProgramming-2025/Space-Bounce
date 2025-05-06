@@ -54,7 +54,7 @@ while True:
     canShoot = True
     shootTimer = 0
     shootTimerMax = 1 * 100
-    deathTimer = 100
+    deathTimer = 150
     laserTimer = 100
     alive = True
     lives = 3
@@ -166,7 +166,7 @@ while True:
                     canShoot = False
                     deathTimer -= 1
                     if deathTimer <= 0:
-                        deathTimer = 100
+                        deathTimer = 150
                         alive = True
                         canShoot = True
                         lives -= 1
