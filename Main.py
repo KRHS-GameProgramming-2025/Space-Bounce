@@ -64,6 +64,8 @@ while True:
     
     keys = []
     lasers=[]
+    bombIsExploding = False
+    
     while mode == "play":
         if lives > 0:
             for event in pygame.event.get():
@@ -121,6 +123,17 @@ while True:
                 player.goKey("up")
             elif "s" in keys:
                 player.goKey("down")
+                
+            if bombIsExploding:
+            if bomb.explode():
+                bombIsExploding = False
+                
+                goodSpawn = False
+                while not goodSpawn:
+                    print("Respawning")
+                    bomb.respawn(size, tileSize)
+                    goodSpawn = not checkSpawn(bomb)
+                player.die(bomb.damage)
             
             if not canShoot and shootTimer != 0:
                 shootTimer -= 1
