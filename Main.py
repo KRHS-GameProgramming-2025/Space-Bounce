@@ -179,7 +179,6 @@ while True:
                         
             for laser in lasers:
                 laser.update(size)
-            print(lives)
         
         
             screen.fill((64, 128, 255))

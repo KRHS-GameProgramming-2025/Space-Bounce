@@ -7,7 +7,7 @@ class Player(Ball):
     def __init__(self, maxSpeed=4, startPos=[0,0]):
         Ball.__init__(self, [0,0], startPos)
         self.baseImage = pygame.image.load("Images/Player/Ship.png")
-        self.imagedead = pygame.image.load("Images/Player/DestroyedShip.png")
+        self.imagedead = pygame.image.load("Images/Player/DestroyedShip6.png")
         self.image = self.baseImage
         self.rect = self.image.get_rect(center=startPos)
         self.x = self.rect.centerx
