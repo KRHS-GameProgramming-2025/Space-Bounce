@@ -48,6 +48,8 @@ while True:
         clock.tick(100)
         
     background = pygame.image.load("Images/Other/Background.png")
+    lifeImage = pygame.image.load("Images/Other/ShipLife.png")
+    missingLifeImage = pygame.image.load("Images/Other/ShipLifeMissing.png")
     counter = 0;  
     player = Player(4, [900/2, 700/2])
     balls = [Ball()]
@@ -181,8 +183,12 @@ while True:
                 laser.update(size)
         
         
+            
+        
             screen.fill((64, 128, 255))
             screen.blit(background, (0, 0))
+            screen.blit(lifeImage, (840, 10))
+            screen.blit(missingLifeImage, (780, 10))
             for laser in lasers:
                 screen.blit(laser.image, laser.rect)
             for ball in balls:
