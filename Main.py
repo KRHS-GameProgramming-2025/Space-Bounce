@@ -183,7 +183,7 @@ while True:
                         
             for laser in lasers:
                 laser.update(size)
-        
+                
         
             
         
@@ -191,10 +191,21 @@ while True:
             screen.blit(background, (0, 0))
             
             
-            screen.blit(missingLifeImage, (780, 10))
-            screen.blit(lifeImage, (840, 10))
+        
             for laser in lasers:
                 screen.blit(laser.image, laser.rect)
+            if lives == 3:    
+                screen.blit(lifeImage, (840, 10))
+                screen.blit(lifeImage, (780, 10))
+                screen.blit(lifeImage, (720, 10))
+            if lives == 2:    
+                screen.blit(lifeImage, (840, 10))
+                screen.blit(lifeImage, (780, 10))
+                screen.blit(missingLifeImage, (720, 10))
+            if lives == 1:    
+                screen.blit(lifeImage, (840, 10))
+                screen.blit(missingLifeImage, (780, 10))
+                screen.blit(missingLifeImage, (720, 10))
             for ball in balls:
                 screen.blit(ball.image, ball.rect)
             screen.blit(player.image, player.rect)
