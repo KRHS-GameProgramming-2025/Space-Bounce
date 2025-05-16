@@ -38,6 +38,8 @@ while True:
     background = pygame.image.load("Images/Other/TitleScreen.png")
     while mode =="start":
         for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit();
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     mode="play"
@@ -187,8 +189,10 @@ while True:
         
             screen.fill((64, 128, 255))
             screen.blit(background, (0, 0))
-            screen.blit(lifeImage, (840, 10))
+            
+            
             screen.blit(missingLifeImage, (780, 10))
+            screen.blit(lifeImage, (840, 10))
             for laser in lasers:
                 screen.blit(laser.image, laser.rect)
             for ball in balls:
