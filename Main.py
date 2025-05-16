@@ -38,6 +38,8 @@ while True:
     background = pygame.image.load("Images/Other/TitleScreen.png")
     while mode =="start":
         for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit();
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     mode="play"
@@ -48,6 +50,8 @@ while True:
         clock.tick(100)
         
     background = pygame.image.load("Images/Other/Background.png")
+    lifeImage = pygame.image.load("Images/Other/ShipLife.png")
+    missingLifeImage = pygame.image.load("Images/Other/ShipLifeMissing.png")
     counter = 0;  
     player = Player(4, [900/2, 700/2])
     balls = [Ball()]
@@ -194,8 +198,14 @@ while True:
                 laser.update(size)
         
         
+            
+        
             screen.fill((64, 128, 255))
             screen.blit(background, (0, 0))
+            
+            
+            screen.blit(missingLifeImage, (780, 10))
+            screen.blit(lifeImage, (840, 10))
             for laser in lasers:
                 screen.blit(laser.image, laser.rect)
             for ball in balls:
@@ -212,6 +222,8 @@ while True:
     background = pygame.image.load("Images/Other/Deathscreen.png")
     while mode =="end":
         for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit();
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     mode="start"
