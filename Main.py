@@ -52,6 +52,7 @@ while True:
     background = pygame.image.load("Images/Other/Background.png")
     lifeImage = pygame.image.load("Images/Other/ShipLife.png")
     missingLifeImage = pygame.image.load("Images/Other/ShipLifeMissing.png")
+    
     counter = 0;  
     player = Player(4, [900/2, 700/2])
     balls = [Ball()]
@@ -164,8 +165,9 @@ while True:
                    
             
                 if player.ballCollide(ball):
-                    alive = False
-                    player.death()
+                    if alive == True:
+                        alive = False
+                        player.death()
                 if alive == False:
                     canShoot = False
                     deathTimer -= 1
