@@ -23,7 +23,8 @@ class Ball():
                       pygame.image.load("Images/Ball/BallExplode4.png"),
                       pygame.image.load("Images/Ball/BallExplode5.png"),
                       pygame.image.load("Images/Ball/BallExplode6.png"),
-                      pygame.image.load("Images/Ball/BallExplode7.png"),]
+                      pygame.image.load("Images/Ball/BallExplode7.png"),
+                      pygame.image.load("Images/Ball/BallExplode8.png"),]
         
         self.rect = self.rect.move(startPos)
 
