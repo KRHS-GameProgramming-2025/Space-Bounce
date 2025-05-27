@@ -52,6 +52,7 @@ while True:
     background = pygame.image.load("Images/Other/Background.png")
     lifeImage = pygame.image.load("Images/Other/ShipLife.png")
     missingLifeImage = pygame.image.load("Images/Other/ShipLifeMissing.png")
+    
     counter = 0;  
     player = Player(4, [900/2, 700/2])
     balls = [Ball()]
@@ -177,8 +178,9 @@ while True:
                    
             
                 if player.ballCollide(ball):
-                    alive = False
-                    player.death()
+                    if alive == True:
+                        alive = False
+                        player.death()
                 if alive == False:
                     canShoot = False
                     deathTimer -= 1
@@ -196,7 +198,7 @@ while True:
                         
             for laser in lasers:
                 laser.update(size)
-        
+                
         
             
         
@@ -204,10 +206,23 @@ while True:
             screen.blit(background, (0, 0))
             
             
-            screen.blit(missingLifeImage, (780, 10))
-            screen.blit(lifeImage, (840, 10))
+        
             for laser in lasers:
                 screen.blit(laser.image, laser.rect)
+                
+            if lives == 3:    
+                screen.blit(lifeImage, (840, 10))
+                screen.blit(lifeImage, (780, 10))
+                screen.blit(lifeImage, (720, 10))
+            if lives == 2:    
+                screen.blit(lifeImage, (840, 10))
+                screen.blit(lifeImage, (780, 10))
+                screen.blit(missingLifeImage, (720, 10))
+            if lives == 1:    
+                screen.blit(lifeImage, (840, 10))
+                screen.blit(missingLifeImage, (780, 10))
+                screen.blit(missingLifeImage, (720, 10))
+                
             for ball in balls:
                 screen.blit(ball.image, ball.rect)
             screen.blit(player.image, player.rect)
