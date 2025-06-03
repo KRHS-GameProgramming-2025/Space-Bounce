@@ -13,6 +13,24 @@ class Player(Ball):
         self.x = self.rect.centerx
         self.y = self.rect.centery
         
+        self.explosionImages = [pygame.image.load("Images/Player/DestroyedShip1.png"),
+                      pygame.image.load("Images/Player/DestroyedShip2.png"),
+                      pygame.image.load("Images/Player/DestroyedShip3.png"),
+                      pygame.image.load("Images/Player/DestroyedShip4.png"),
+                      pygame.image.load("Images/Player/DestroyedShip5.png"),
+                      pygame.image.load("Images/Player/DestroyedShip6.png"),
+                      pygame.image.load("Images/Player/DestroyedShip7.png"),
+                      pygame.image.load("Images/Player/DestroyedShip8.png"),
+                      pygame.image.load("Images/Player/DestroyedShip9.png"),
+                      pygame.image.load("Images/Player/DestroyedShip10.png"),
+                      pygame.image.load("Images/Player/DestroyedShip11.png"),]
+        
+        self.frame = 0
+        self.frameMax = len(self.images)-1 
+        self.image = self.images[self.frame]
+        self.rect = self.image.get_rect()
+        self.animationTimer = 0
+        self.animationTimerMax = 120/10
         self.maxSpeed = maxSpeed
         self.angle = 90
         self.speed = 0
@@ -36,7 +54,15 @@ class Player(Ball):
             self.speed += self.accSpeed
         elif direction == "down":
             self.speed -= self.accSpeed        
-                  
+    
+    def explode(self):
+        if self.animationTimer >= self.animationTimerMax:
+            self.animationTimer = 0
+            if self.frame >= self.frameMax:
+                self.frame = 0
+            else:
+                self.frame += 1
+            self.image = self.images[self.frame]
                     
     def move(self):
         if self.speed > self.maxSpeed:
@@ -84,13 +110,13 @@ class Player(Ball):
          
         
     def death(self):
+        self.explode()
         self.dieSound.play()
         self.maxSpeed = 0
         self.angle = 90
         self.speed = 0
         self.turnSpeed = 0
         self.accSpeed = 0
-        self.image = self.imagedead
     
     def respawn(self):
         self.maxSpeed = 4

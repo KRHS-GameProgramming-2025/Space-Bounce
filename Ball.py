@@ -25,12 +25,16 @@ class Ball():
                       pygame.image.load("Images/Ball/BallExplode6.png"),
                       pygame.image.load("Images/Ball/BallExplode7.png"),
                       pygame.image.load("Images/Ball/BallExplode8.png"),]
-        
+                      
+        self.explosionFrameMax = len(self.explosionImages)-1 
+        self.explosionFrame = 0
+        self.explosionImage = self.explosionImages[self.explosionFrame]
         self.rect = self.rect.move(startPos)
 
         
         self.kind = "ball"
         self.animationTimer = 0
+        self.explosionAnimationTimer = 0
         self.animationTimerMax = 120/10
         
         self.deathSound=pygame.mixer.Sound("Sounds/Other/ball explosion.mp3")
@@ -79,6 +83,15 @@ class Ball():
                 self.frame += 1
             self.image = self.images[self.frame]
             
+    def explode(self):
+        if self.explosionAnimationTimer >= self.animationTimerMax:
+            self.explosionAnimationTimer = 0
+            if self.explosionFrame >= self.explosionFrameMax:
+                self.explosionFrame = 0
+            else:
+                self.explosionFrame += 1
+            self.image = self.explosionImages[self.explosionFrame]
+            
             
     def ballCollide(self, other):
         if self != other:
@@ -99,6 +112,7 @@ class Ball():
         
     def die(self):
         self.deathSound.play()
+        
         
 
     def getDist(self, other):
