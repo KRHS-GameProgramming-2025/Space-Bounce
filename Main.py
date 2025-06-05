@@ -130,16 +130,7 @@ while True:
             elif "s" in keys:
                 player.goKey("down")
                 
-            if bombIsExploding:
-            if bomb.explode():
-                bombIsExploding = False
-                
-                goodSpawn = False
-                while not goodSpawn:
-                    print("Respawning")
-                    bomb.respawn(size, tileSize)
-                    goodSpawn = not checkSpawn(bomb)
-                player.die(bomb.damage)
+   
             
             if not canShoot and shootTimer != 0:
                 shootTimer -= 1
@@ -191,7 +182,6 @@ while True:
                         alive = True
                         canShoot = True
                         lives -= 1
-                        player.respawn()
                         
             for ball in balls:
                 if not ball.living:

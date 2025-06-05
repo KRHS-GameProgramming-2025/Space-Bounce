@@ -36,7 +36,7 @@ class Ball():
         self.kind = "ball"
         self.animationTimer = 0
         self.explosionAnimationTimer = 0
-        self.animationTimerMax = 100/10
+        self.animationTimerMax = 100/8
         
         self.deathSound=pygame.mixer.Sound("Sounds/Other/ball explosion.mp3")
         
