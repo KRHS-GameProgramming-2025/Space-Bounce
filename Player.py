@@ -13,6 +13,7 @@ class Player(Ball):
         self.x = self.rect.centerx
         self.y = self.rect.centery
         
+        self.exploding = False
         self.explosionImages = [pygame.image.load("Images/Player/DestroyedShip1.png"),
                       pygame.image.load("Images/Player/DestroyedShip2.png"),
                       pygame.image.load("Images/Player/DestroyedShip3.png"),
@@ -26,11 +27,11 @@ class Player(Ball):
                       pygame.image.load("Images/Player/DestroyedShip11.png"),]
         
         self.frame = 0
-        self.frameMax = len(self.images)-1 
-        self.image = self.images[self.frame]
+        self.frameMax = len(self.explosionImages)-1 
+
         self.rect = self.image.get_rect()
         self.animationTimer = 0
-        self.animationTimerMax = 120/10
+        self.animationTimerMax = 100/10
         self.maxSpeed = maxSpeed
         self.angle = 90
         self.speed = 0
@@ -56,13 +57,18 @@ class Player(Ball):
             self.speed -= self.accSpeed        
     
     def explode(self):
+        self.animationTimer += 1
+        print(self.frame, self.animationTimer)
         if self.animationTimer >= self.animationTimerMax:
             self.animationTimer = 0
+            self.frame += 1
             if self.frame >= self.frameMax:
+                self.exploding = False
                 self.frame = 0
+                self.image = self.baseImage
+                self.respawn()
             else:
-                self.frame += 1
-            self.image = self.images[self.frame]
+                self.image = self.explosionImages[self.frame]
                     
     def move(self):
         if self.speed > self.maxSpeed:
@@ -88,7 +94,8 @@ class Player(Ball):
             self.x = 0
         elif self.x < 0:
             self.x = width
-            
+    
+        
 
     def animate(self):
         rot_image = pygame.transform.rotate(self.baseImage, self.angle)
@@ -99,7 +106,7 @@ class Player(Ball):
          
             
     def ballCollide(self, other):
-        if self != other:
+        if self != other and not other.exploding:
             if self.rect.right > other.rect.left:
                 if self.rect.left < other.rect.right:
                     if self.rect.bottom > other.rect.top:
@@ -110,7 +117,7 @@ class Player(Ball):
          
         
     def death(self):
-        self.explode()
+        self.exploding = True
         self.dieSound.play()
         self.maxSpeed = 0
         self.angle = 90
@@ -119,6 +126,7 @@ class Player(Ball):
         self.accSpeed = 0
     
     def respawn(self):
+        print("---RESPAWN---")
         self.maxSpeed = 4
         self.angle = 90
         self.speed = 0

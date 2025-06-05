@@ -17,6 +17,7 @@ class Ball():
         self.speed = [self.speedx, self.speedy]
         self.rad = (self.rect.height/2 +self.rect.width/2)/2
         
+        self.exploding = False
         self.explosionImages = [pygame.image.load("Images/Ball/BallExplode1.png"),
                       pygame.image.load("Images/Ball/BallExplode2.png"),
                       pygame.image.load("Images/Ball/BallExplode3.png"),
@@ -35,12 +36,14 @@ class Ball():
         self.kind = "ball"
         self.animationTimer = 0
         self.explosionAnimationTimer = 0
-        self.animationTimerMax = 120/10
+        self.animationTimerMax = 100/10
         
         self.deathSound=pygame.mixer.Sound("Sounds/Other/ball explosion.mp3")
         
         self.didBounceX = False
         self.didBounceY = False
+        
+        self.living = True
     
     def wallCollide(self, size):
         width = size[0]
@@ -62,9 +65,13 @@ class Ball():
         self.move()
         self.wallCollide(size)
         self.animationTimer += 1
-        self.animate()
+        if self.exploding:
+            self.explode()
+        else:
+            self.animate()
         self.didBounceX = False
         self.didBounceY = False
+        
         
 
     def move(self):
@@ -84,14 +91,16 @@ class Ball():
             self.image = self.images[self.frame]
             
     def explode(self):
-        if self.explosionAnimationTimer >= self.animationTimerMax:
-            self.explosionAnimationTimer = 0
+        self.animationTimer += 1
+        if self.animationTimer >= self.animationTimerMax:
+            self.animationTimer = 0
+            self.explosionFrame += 1
             if self.explosionFrame >= self.explosionFrameMax:
+                self.exploding = False
                 self.explosionFrame = 0
+                self.living = False
             else:
-                self.explosionFrame += 1
-            self.image = self.explosionImages[self.explosionFrame]
-            
+                self.image = self.explosionImages[self.explosionFrame]
             
     def ballCollide(self, other):
         if self != other:
@@ -100,18 +109,13 @@ class Ball():
                     if self.rect.bottom > other.rect.top:
                         if self.rect.top < other.rect.bottom:
                             if self.getDist(other) < self.rad + other.rad:
-                                if not self.didBounceX:
-                                    self.speedx = -self.speedx
-                                    self.didBounceX = True
-                                if not self.didBounceY:
-                                    self.speedy = -self.speedy
-                                    self.didBounceY = True
                                 return True
         return False
         
         
     def die(self):
         self.deathSound.play()
+        self.exploding = True
         
         
 

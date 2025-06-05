@@ -163,12 +163,9 @@ while True:
                         lasers.remove(laser)
                         laserTimer = 100
                     if ball.ballCollide(laser):
-                        ballDeathTimer = 150
-                        ball.explode()
-                        ballDeathTimer -= 1
-                        if ballDeathTimer <= 0:
-                            balls.remove(ball)
-            
+                        ball.die()
+
+                    
                 if player.ballCollide(ball):
                     if alive == True:
                         alive = False
@@ -183,6 +180,9 @@ while True:
                         lives -= 1
                         player.respawn()
                         
+            for ball in balls:
+                if not ball.living:
+                    balls.remove(ball)
                         
             if lives == 0:
                 mode="end"
