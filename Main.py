@@ -60,6 +60,7 @@ while True:
     shootTimer = 0
     shootTimerMax = 1 * 100
     deathTimer = 150
+ 
     laserTimer = 100
     alive = True
     lives = 3
@@ -168,15 +169,16 @@ while True:
                         lasers.remove(laser)
                         laserTimer = 100
                         points += 50
-                        balls.remove(ball)
                         laser.hit()
                         score.update(points)
                     elif laserTimer <= 0 and canShoot == True:
                         laser.update(size)
                         lasers.remove(laser)
                         laserTimer = 100
-                   
-            
+                    if ball.ballCollide(laser):
+                        ball.die()
+
+                    
                 if player.ballCollide(ball):
                     if alive == True:
                         alive = False
@@ -191,6 +193,9 @@ while True:
                         lives -= 1
                         player.respawn()
                         
+            for ball in balls:
+                if not ball.living:
+                    balls.remove(ball)
                         
             if lives == 0:
                 mode="end"
