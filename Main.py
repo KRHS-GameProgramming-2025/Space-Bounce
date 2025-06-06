@@ -130,7 +130,6 @@ while True:
             elif "s" in keys:
                 player.goKey("down")
                 
-   
             
             if not canShoot and shootTimer != 0:
                 shootTimer -= 1
