@@ -31,7 +31,7 @@ class Player(Ball):
 
         self.rect = self.image.get_rect()
         self.animationTimer = 0
-        self.animationTimerMax = 100/8
+        self.animationTimerMax = 100/7
         self.maxSpeed = maxSpeed
         self.angle = 90
         self.speed = 0
